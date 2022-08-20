@@ -1,24 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import { useEffect, useState } from "react";
+import filmApi, {movieType} from "./api/tmdbApi.js";
+import { BrowserRouter as Router, Route, Link, Routes } from 'react-router-dom'
+import Home from './pages/Home/Home.jsx'
+import News from "./pages/News/News.jsx";
+import Header from "./components/Header/Header.jsx";
+import './App.scss'
 
 function App() {
+ 
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Router>
+        <Header/>
+        <Routes>
+          <Route path="/" element={<Home />}/>
+          <Route path="/news" element={<News />} />
+          {/* <Route path="/movie/:id" element={<Movie />}/> */}
+        </Routes>
+      </Router>
+    </>
   );
 }
 
